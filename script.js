@@ -11,12 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
 
             if (data.online) {
-                playerCountEl.textContent = `${data.players.online}/${data.players.max}`;
+                playerCountEl.textContent = `${data.players.online}/${data.players.max} Online`;
             } else {
-                playerCountEl.textContent = '0/0';
+                playerCountEl.textContent = '0/0 Online';
             }
         } catch (error) {
-            playerCountEl.textContent = '0/0';
+            playerCountEl.textContent = '0/0 Online';
             console.error('Failed to fetch player count:', error);
         }
     }
