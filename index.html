@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MNS Minecraft Network</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <!-- Left: Logo -->
+            <div class="logo-container">
+                <img src="logo.png" alt="MNS Network Logo" class="nav-logo">
+                <span class="logo-text"><strong>MNS Network</strong></span>
+            </div>
+    
+            <!-- Center: Player Count -->
+            <div id="playerCount" class="player-count">0/0 Online</div>
+    
+            <!-- Right: Navigation Links -->
+            <div class="right-nav">
+                <div class="nav-links">
+                    <a href="http://linkrun.xyz/mnsnetworkdc/4470" id="discord-link">
+                        <i class="fab fa-discord"></i> Discord
+                    </a>
+                    <a href="" id="copy-ip">
+                        <i class="fas fa-copy"></i> IP
+                    </a>
+                    <a href="https://bans-mnsnetwork.linkrun.xyz/" target="_blank">
+                        <i class="fas fa-ban"></i> Bans
+                    </a>
+                </div>
+                <div id="mobileMenuToggle" class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+
+    <!-- Welcome Section -->
+    <section id="welcome" class="parallax-section">
+        <div class="welcome-content">
+            <div class="logo-container">
+                <div class="logo-wrapper">
+                    <img src="logo.png" alt="MNS Network Logo" class="welcome-logo">
+                </div>
+            </div>
+            <div class="welcome-text">
+                <h1><span style="color: #47b4ec;">MNS</span> Minecraft Network</h1>
+                <div class="action-buttons">
+                    <a href="http://linkrun.xyz/mnsnetworkdc/4470" style="text-decoration: none;" target="_blank" rel="noopener noreferrer">
+                        <button id="discord-join" class="btn discord-btn">
+                            <i class="fab fa-discord"></i> Join Discord
+                        </button>
+                    </a>
+                    <button id="server-ip" class="btn ip-btn">
+                        <i class="fas fa-copy"></i> Copy IP
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is MNS Section -->
+    <section id="about" class="info-section">
+        <div class="section-content">
+            <h2 style="color: #47b4ec;">What is MNS</h2>
+            <p>Our Minecraft Network is a vibrant community dedicated to providing unique and exciting gameplay experiences. We strive to create a welcoming environment for players of all skill levels.</p>
+        </div>
+    </section>
+
+    <!-- How to Join Section -->
+    <section id="join-steps" class="parallax-section">
+        <div class="section-content">
+            <h2 style="text-align: center; color: #47b4ec;">How to Join</h2>
+            <div class="join-process">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-arrow">→</div>
+                    <div class="step-number">2</div>
+                    <div class="step-arrow">→</div>
+                    <div class="step-number">3</div>
+                </div>
+                <div class="step-details">
+                    <div class="step-item">
+                        <h3>Add the server</h3>
+                        <p>Go to Multiplayer in Minecraft, then Add Server</p>
+                    </div>
+                    <div class="step-item">
+                        <h3>Enter server address</h3>
+                        <p>Enter mnsnetwork.linkrun.xyz in the server address field and click "Done"</p>
+                    </div>
+                    <div class="step-item">
+                        <h3>You're done!</h3>
+                        <p>Now you can play on our network with other players!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Modes Section -->
+     <section id="game-modes">
+        <div class="section-content">
+            <h2 style="color: #47b4ec;">Game Modes</h2>
+            <div class="game-mode-grid">
+                <div class="game-mode-card survival">Survival</div>
+                <div class="game-mode-card skywars">SkyWars</div>
+                <div class="game-mode-card skyblock">SkyBlock</div>
+                <div class="game-mode-card lifesteal">LifeSteal</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Discord Section -->
+     <section id="discord-section" class="parallax-section">
+        <div class="section-content">
+            <h2 style="color: #47b4ec;">Join Our Discord</h2>
+            <button id="main-discord-join" class="btn discord-btn">
+                <i class="fab fa-discord"></i> Join Discord
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="http://linkrun.xyz/mnsnetworkdc/4470" id="footer-discord" title="Join Discord">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="" id="footer-copy-ip" title="Copy Server IP">
+                    <i class="fas fa-copy"></i>
+                </a>
+                <a href="https://bans-mnsnetwork.linkrun.xyz/" target="_blank" title="View Bans">
+                    <i class="fas fa-ban"></i>
+                </a>
+            </div>
+            <div class="copyright">
+                © 2024 MNS Minecraft Network. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

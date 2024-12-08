@@ -1,0 +1,570 @@
+:root {
+    --amethyst-dark: #08141c;
+    --amethyst-light: #47b4ec;
+    --text-color: #E6E6E6;
+    --transparent-overlay: rgba(0, 0, 0, 0.6);
+}
+
+* {
+    font-family: "Nunito Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--amethyst-dark);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+
+/* Navigation Bar Styling */
+
+/* Right Navigation Section */
+.right-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--amethyst-light);
+}
+
+.player-count {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.mobile-menu-toggle {
+    display: none;
+/*    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 1000;
+    position: relative;
+    margin-left: 20px;*/
+}
+
+.mobile-menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 2px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+/* Parallax Sections */
+.parallax-section {
+   
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#welcome {
+    background-image: url('bg.jpg');
+}
+
+#welcome::before,
+#join-steps::before,
+#discord-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--transparent-overlay);
+}
+
+#welcome h1 {
+    font-size: 3rem; /* Adjust this value for desired size */
+    font-weight: bold; /* Optional: Make it bold for better visibility */
+    text-align: center; /* Ensure it's centered */; /* Keeps it consistent with your theme */
+    margin-top: 20px; /* Optional: Adjust spacing */
+}
+
+
+#discord-section h2 {
+    font-size: 5rem; /* Adjust the value as needed */
+    text-align: center; /* Ensures the heading stays centered */
+    color: var(--text-color); /* Optional: Keeps the text consistent */
+}
+
+.welcome-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 30px;
+}
+
+
+
+#join-steps {
+    background-image: url('bg2.png');
+}
+
+
+.join-steps-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 30px;
+}
+
+
+#discord-section {
+    background-image: url('background.png');
+}
+
+.logo-wrapper {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.welcome-logo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.welcome-text {
+    margin-left: 50px;
+    color: var(--text-color);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.discord-btn {
+    background-color: #7289DA;
+    color: white;
+}
+
+.ip-btn {
+    background-color: var(--amethyst-light);
+    color: white;
+}
+
+/* Other Sections */
+.info-section, #game-modes {
+    background-color: var(--amethyst-dark);
+    padding: 100px 30px;
+    text-align: center;
+}
+
+.section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.welcome-content,
+.join-steps-content,
+.section-content {
+    position: relative;
+    z-index: 10;
+}
+
+
+.game-mode-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.game-mode-card {
+    background: var(--transparent-overlay);
+    padding: 50px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.game-mode-card:hover {
+    transform: scale(1.05);
+}
+
+/* Join Steps Section */
+.join-process {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--amethyst-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 20px;
+}
+
+.step-arrow {
+    font-size: 2rem;
+    color: var(--text-color);
+}
+
+.step-details {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.step-item {
+    flex: 1;
+    margin: 0 15px;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--amethyst-light);
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    .right-nav {
+        order: 3;
+    }
+
+    .nav-container {
+        justify-content: space-between;
+        padding: 15px;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 10px 0;
+    }
+
+    .nav-links.mobile-active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links a {
+        padding: 15px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    .mobile-menu-toggle span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: var(--text-color);
+        border-radius: 3px;
+        transition: 0.3s;
+    }
+
+    /* Hamburger Animation */
+    .mobile-menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .section, .parallax-section, .info-section {
+        width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .section-content {
+        padding: 0 20px;
+    }
+
+    .welcome-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .welcome-text {
+        margin-left: 0;
+        margin-top: 30px;
+    }
+
+    .game-mode-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0 20px;
+    }
+
+    .game-mode-card {
+        background: rgba(74, 20, 140, 0.8);
+        padding: 30px 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 10px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .game-mode-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .game-mode-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: var(--text-color);
+    }
+
+    .step {
+        flex-direction: column;
+    }
+
+    .step-details {
+        flex-direction: column;
+    }
+
+    .step-item {
+        margin: 15px 0;
+    }
+
+    .player-count {
+        position: relative;
+        left: auto;
+        transform: none;
+        margin: 0 15px;
+    }
+}
+
+.section, .parallax-section, .info-section {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+
+
+.game-mode-card {
+    background: var(--transparent-overlay);
+    padding: 50px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    color: azure;
+    font-size: 1.5rem;
+    font-weight: bold;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Add overlay to make text more readable */
+.game-mode-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.game-mode-card:hover {
+    color: #fd4242; /* Example: Change to orange on hover */
+}
+
+
+/* Position text above the overlay */
+.game-mode-card {
+    position: relative;
+}
+
+.game-mode-card span {
+    position: relative;
+    z-index: 2;
+}
+
+/* Individual game mode backgrounds */
+.survival {
+    background-image: url('survival.png');
+}
+
+.skywars {
+    background-image: url('skywars.png');
+}
+
+.skyblock {
+    background-image: url('skyblock.png');
+}
+
+.lifesteal {
+    background-image: url('lifesteal.png');
+}
+
+.game-mode-card:hover {
+    transform: scale(1.05);
+}
+
+/* Mobile responsiveness adjustments */
+@media screen and (max-width: 768px) {
+    .game-mode-card {
+        min-height: 150px;
+    }
+}
+
+#discord-section .section-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the button and other content horizontally */
+    justify-content: center; /* Optional: Centers content vertically if needed */
+}
+
+#discord-section button {
+    margin-top: 20px; /* Adds spacing between the heading and the button */
+}
