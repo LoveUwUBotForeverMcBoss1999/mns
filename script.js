@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const serverIP = 'mc.mnsnework.xyz';
     const serverPort = 25565;
-    const discordLink = 'https://discord.gg/yourlink'; // Replace with actual Discord link
+    const discordLink = 'https://discord.gg/Zujvry4n'; // Replace with actual Discord link
 
     // Player Count Fetching
     async function fetchPlayerCount() {
