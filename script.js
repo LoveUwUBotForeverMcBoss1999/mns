@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const serverIP = 'mnsnetwork.linkrun.xyz';
+    const serverIP = 'mc.mnsnework.xyz';
     const serverPort = 25565;
     const discordLink = 'https://discord.gg/yourlink'; // Replace with actual Discord link
 
