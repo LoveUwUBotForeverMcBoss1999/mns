@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // IP Copy Functionality
     function copyServerIP() {
         navigator.clipboard.writeText(serverIP).then(() => {
-            alert(`Copied server IP: ${serverIP}`);
+            console.log(`Copied server IP: ${serverIP}`); // Optional: Log to the console instead
         }).catch(err => {
             console.error('Failed to copy IP:', err);
         });
