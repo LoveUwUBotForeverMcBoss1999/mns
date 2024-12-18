@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const serverIP = 'mc.mnsnetwork.xyz';
     const serverPort = 25565;
-    const discordLink = 'https://discord.gg/Zujvry4n'; // Replace with actual Discord link
+    const discordLink = 'https://discord.gg/Zujvry4n';
 
     // Player Count Fetching
     async function fetchPlayerCount() {
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // IP Copy Functionality
     function copyServerIP() {
         navigator.clipboard.writeText(serverIP).then(() => {
-            console.log(`Copied server IP: ${serverIP}`); // Optional: Log to the console instead
+            console.log(`Copied server IP: ${serverIP}`);
         }).catch(err => {
             console.error('Failed to copy IP:', err);
         });
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Toggle menu and animation
     mobileMenuToggle.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevent click from bubbling to document
+        e.stopPropagation();
         mobileMenuToggle.classList.toggle('active');
         navLinks.classList.toggle('mobile-active');
     });
@@ -66,27 +66,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle window resize
     let timeout;
     window.addEventListener('resize', () => {
-        // Debounce resize handler
         clearTimeout(timeout);
         timeout = setTimeout(() => {
             if (window.innerWidth > 768) {
                 mobileMenuToggle.classList.remove('active');
                 navLinks.classList.remove('mobile-active');
             }
-            
-            // Prevent any horizontal scrolling after resize
-            document.body.style.width = '100%';
         }, 250);
     });
 
-    // Prevent horizontal scrolling on mobile
+    // Remove the touchmove prevention
+    // Only prevent touch events within the mobile menu when it's active
     document.body.addEventListener('touchmove', (e) => {
-        if (e.target.closest('.nav-links') === null) {
+        if (navLinks.classList.contains('mobile-active') && e.target.closest('.nav-links')) {
             e.preventDefault();
         }
     }, { passive: false });
 
     // Fetch player count initially and set an interval to update
     fetchPlayerCount();
-    setInterval(fetchPlayerCount, 60000); // Update every 60 seconds
+    setInterval(fetchPlayerCount, 60000);
 });
