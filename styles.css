@@ -17,9 +17,9 @@ body {
     background-color: var(--amethyst-dark);
     color: var(--text-color);
     line-height: 1.6;
-    overflow-x: hidden;
     width: 100%;
     position: relative;
+    /* Remove overflow-x: hidden from body */
 }
 
 
@@ -113,7 +113,7 @@ body {
 .parallax-section {
    
     position: relative;
-    background-attachment: fixed;
+    background-attachment: scroll; /* Change to scroll for better mobile performance */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -121,6 +121,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    
+}
+
+@media screen and (min-width: 769px) {
+    .parallax-section {
+        background-attachment: fixed; /* Restore fixed attachment for desktop */
+    }
+}
+
+/* Add these new rules */
+html {
+    overflow-x: hidden; /* Control horizontal overflow at the root level */
 }
 
 #welcome {
@@ -368,6 +380,8 @@ footer {
         display: flex;
         flex-direction: column;
         align-items: center;
+        max-height: calc(100vh - 70px); /* Adjust based on your navbar height */
+        overflow-y: auto;
     }
 
     .nav-links a {
@@ -411,8 +425,7 @@ footer {
     }
 
     .section, .parallax-section, .info-section {
-        width: 100vw;
-        overflow-x: hidden;
+        width: 100%;
     }
 
     .section-content {
@@ -473,6 +486,10 @@ footer {
         left: auto;
         transform: none;
         margin: 0 15px;
+    }
+    .section, .parallax-section, .info-section {
+        width: 100%;
+        /* Remove overflow-x: hidden */
     }
 }
 
