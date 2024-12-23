@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="vote.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
     
     <style>
@@ -313,6 +314,30 @@
             </div>
         </div>
     </section>
+
+
+
+    <!-- Top Voters Section -->
+    <section id="top-voters">
+        <div class="section-content">
+            <h2 style="color: #47b4ec; text-align: center; margin-bottom: 40px; font-size: 2.5rem;">Top Voters</h2>
+            <div class="voters-table-container">
+                <div id="loading-spinner" class="loading-spinner"></div>
+                <table class="voters-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Player</th>
+                            <th>Votes</th>
+                            <th>Last Vote</th>
+                        </tr>
+                    </thead>
+                    <tbody id="voters-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Footer -->
     <footer>
