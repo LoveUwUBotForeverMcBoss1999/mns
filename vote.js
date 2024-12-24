@@ -5,10 +5,14 @@ async function fetchTopVoters() {
     spinner.style.display = 'flex';
     tableBody.innerHTML = '';
 
+    // Use a CORS proxy service
+    const CORS_PROXY = "https://corsproxy.io/";
+    const API_BASE = "https://votes.mnsnetwork.xyz/api/votes/";
+
     try {
         // Fetch data for top 10 voters
         const voterPromises = Array.from({ length: 10 }, (_, i) => 
-            fetch(`https://votes.mnsnetwork.xyz/api/votes/${i + 1}`)
+            fetch(CORS_PROXY + "?" + encodeURIComponent(API_BASE + (i + 1)))
                 .then(response => {
                     if (!response.ok) throw new Error('API request failed');
                     return response.json();
@@ -25,8 +29,7 @@ async function fetchTopVoters() {
             tableBody.innerHTML = `
                 <tr>
                     <td colspan="4" style="text-align: center; color: #ff4444;">
-                        Unable to load voter data due to CORS restrictions. 
-                        Please ensure the API server allows requests from this domain.
+                        Unable to load voter data. Please try again later.
                     </td>
                 </tr>`;
             return;
@@ -62,7 +65,7 @@ async function fetchTopVoters() {
         tableBody.innerHTML = `
             <tr>
                 <td colspan="4" style="text-align: center; color: #ff4444;">
-                    Unable to load voter data. CORS policy is blocking access to the API.
+                    Unable to load voter data. Please try again later.
                     <br>
                     <small>Technical details: ${error.message}</small>
                 </td>
