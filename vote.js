@@ -2,74 +2,51 @@ async function fetchTopVoters() {
     const spinner = document.getElementById('loading-spinner');
     const tableBody = document.getElementById('voters-table-body');
     
-    // API Configuration
-    const API_BASE = 'https://votes.mnsnetwork.xyz/api/votes/'; // Change this to your actual API URL
-    
-    console.log('Starting to fetch voters data...');
     spinner.style.display = 'flex';
     tableBody.innerHTML = '';
 
+    const API_BASE = 'https://votes.mnsnetwork.xyz/api/votes/';
+    
     try {
-        // Test API connection first
-        console.log('Testing API connection...');
-        try {
-            const testResponse = await fetch(API_BASE + '1');
-            console.log('API Test Response:', testResponse);
-            
-            if (!testResponse.ok) {
-                const errorText = await testResponse.text();
-                console.error('API test failed:', errorText);
-                throw new Error(`API test failed: ${testResponse.status} ${errorText}`);
+        // Log the requests we're about to make
+        console.log('Starting to fetch voter data from:', API_BASE);
+        
+        // Fetch data for top 10 voters one at a time
+        const voters = [];
+        for (let i = 1; i <= 10; i++) {
+            try {
+                const response = await fetch(API_BASE + i);
+                console.log(`Response for voter ${i}:`, response);
+                
+                if (!response.ok) {
+                    const text = await response.text();
+                    console.error(`Error fetching voter ${i}:`, text);
+                    continue;
+                }
+                
+                const data = await response.json();
+                console.log(`Data for voter ${i}:`, data);
+                voters.push(data);
+            } catch (error) {
+                console.error(`Error processing voter ${i}:`, error);
             }
-        } catch (testError) {
-            console.error('API connection test failed:', testError);
-            throw new Error('Could not connect to API. Please check if the API server is running.');
         }
-
-        // Fetch data for top 10 voters
-        console.log('Fetching top 10 voters...');
-        const voterPromises = Array.from({ length: 10 }, (_, i) => {
-            const url = `${API_BASE}${i + 1}`;
-            console.log(`Fetching voter ${i + 1} from ${url}`);
-            
-            return fetch(url)
-                .then(async response => {
-                    if (!response.ok) {
-                        const errorText = await response.text();
-                        console.error(`Error fetching voter ${i + 1}:`, errorText);
-                        throw new Error(`API request failed: ${response.status} ${errorText}`);
-                    }
-                    return response.json();
-                })
-                .catch(error => {
-                    console.error(`Error processing voter ${i + 1}:`, error);
-                    return null;
-                });
-        });
-
-        const voters = await Promise.all(voterPromises);
-        console.log('Received voters data:', voters);
         
         spinner.style.display = 'none';
 
         // If no valid voter data was received, show error
-        if (!voters.some(Boolean)) {
-            console.error('No valid voter data received');
+        if (voters.length === 0) {
             tableBody.innerHTML = `
                 <tr>
                     <td colspan="4" style="text-align: center; color: #ff4444;">
-                        Unable to load voter data. Please check the console for detailed error messages.
-                        <br>
-                        <small>Make sure the API server is running and accessible at ${API_BASE}</small>
+                        No voter data available. Please try again later.
                     </td>
                 </tr>`;
             return;
         }
 
-        // Filter out any failed requests and create table rows
-        voters.filter(Boolean).forEach((voter, index) => {
-            console.log(`Processing voter ${index + 1}:`, voter);
-            
+        // Create table rows for each voter
+        voters.forEach((voter, index) => {
             const row = document.createElement('tr');
             const rankClass = index < 3 ? `rank-${index + 1}` : '';
             
@@ -93,24 +70,21 @@ async function fetchTopVoters() {
             tableBody.appendChild(row);
         });
     } catch (error) {
-        console.error('Fatal error fetching voter data:', error);
+        console.error('Error fetching voter data:', error);
         spinner.style.display = 'none';
         tableBody.innerHTML = `
             <tr>
                 <td colspan="4" style="text-align: center; color: #ff4444;">
-                    Unable to load voter data. Please check the console for detailed error messages.
+                    Error loading voter data. Please check console for details.
                     <br>
-                    <small>Technical details: ${error.message}</small>
+                    <small>Error: ${error.message}</small>
                 </td>
             </tr>`;
     }
 }
 
 // Initial load
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Page loaded, fetching voters...');
-    fetchTopVoters();
-});
+document.addEventListener('DOMContentLoaded', fetchTopVoters);
 
 // Refresh every 5 minutes
 setInterval(fetchTopVoters, 300000);
