@@ -209,6 +209,59 @@
                 padding: 60px 0;
             }
         }
+
+        #vote-leaderboard {
+    background-image: url('bg4.jpg');
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#vote-leaderboard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+#vote-leaderboard .section-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.leaderboard-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    padding: 40px 20px;
+    border: 1px solid rgba(71, 180, 236, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.leaderboard-content:hover {
+    transform: translateY(-5px);
+    border-color: var(--amethyst-light);
+}
+
+@media screen and (max-width: 768px) {
+    #vote-leaderboard {
+        min-height: auto;
+        padding: 60px 0;
+    }
+    
+    .leaderboard-content {
+        margin: 0 15px;
+        padding: 30px 15px;
+    }
+}
     </style>
 </head>
 <body>
@@ -311,6 +364,19 @@
         <div class="section-content">
             <h2 style="color: #47b4ec; text-align: center; margin-bottom: 40px; font-size: 2.5rem;"><br>Vote Sites</h2>
             <div id="voteSitesGrid" class="vote-sites-grid">
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section id="vote-leaderboard" class="parallax-section">
+        <div class="section-content">
+            <h2 style="color: #47b4ec; text-align: center; margin-bottom: 40px; font-size: 2.5rem;"><br>View the Voters Leaderboard</h2>
+            <div class="leaderboard-content" style="text-align: center; padding: 20px;">
+                <p style="color: var(--text-color); font-size: 1.2rem; margin-bottom: 30px;">Check out our top voters and compete for the highest rank!</p>
+                <a href="https://votes.mnsnetwork.xyz/leaderboard" target="_blank" class="vote-link" style="font-size: 1.2rem;">
+                    <i class="fas fa-trophy"></i> View Leaderboard
+                </a>
             </div>
         </div>
     </section>
