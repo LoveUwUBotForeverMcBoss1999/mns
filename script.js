@@ -36,11 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', copyServerIP);
     });
 
-    // Redirect to Discord
+    // Redirect to Discord in same tab
     const discordButtons = document.querySelectorAll('#discord-link, #discord-join, #main-discord-join, #footer-discord');
     discordButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            window.open(discordLink, '_blank');
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = discordLink;
         });
     });
 

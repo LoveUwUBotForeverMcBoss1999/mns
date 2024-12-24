@@ -1,3 +1,4 @@
+<!--vitesites.html-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="vote.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
     
     <style>
@@ -315,30 +315,6 @@
         </div>
     </section>
 
-
-
-    <!-- Top Voters Section -->
-    <section id="top-voters">
-        <div class="section-content">
-            <h2 style="color: #47b4ec; text-align: center; margin-bottom: 40px; font-size: 2.5rem;">Top Voters</h2>
-            <div class="voters-table-container">
-                <div id="loading-spinner" class="loading-spinner"></div>
-                <table class="voters-table">
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Player</th>
-                            <th>Votes</th>
-                            <th>Last Vote</th>
-                        </tr>
-                    </thead>
-                    <tbody id="voters-table-body"></tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -361,77 +337,7 @@
             </div>
         </div>
     </footer>
-
-    <script>
-    // Vote sites data
-    const voteSites = [
-        {
-            name: "Minecraft Buzz",
-            link: "https://minecraft.buzz/vote/12835",
-            logo: "https://minecraft.buzz/template/images/logo.png?v=6",
-            prize: "Vote Crate Key",
-            background: "https://minecraft.buzz/template/images/logo.png?v=6"
-        },
-        {
-            name: "MinecraftServers.ORG",
-            link: "https://minecraftservers.org/vote/669390",
-            logo: "https://mnsnetwork.xyz/minecraftservers.org.jpg",
-            prize: "Vote Crate Keys",
-            background: "https://mnsnetwork.xyz/minecraftservers.org.jpg"
-        },
-        {
-            name: "ServersPact",
-            link: "https://www.serverpact.com/vote-47777",
-            logo: "https://preview.redd.it/variations-to-the-minecraft-logo-v0-0dzqovtefeqd1.png?width=1080&crop=smart&auto=webp&s=e5fe1b8b9ab1a689dd6059f087caca969401592f",
-            prize: "Vote Crate Key",
-            background: "https://preview.redd.it/variations-to-the-minecraft-logo-v0-0dzqovtefeqd1.png?width=1080&crop=smart&auto=webp&s=e5fe1b8b9ab1a689dd6059f087caca969401592f"
-        },
-        {
-            name: "Minecraft Server List",
-            link: "https://minecraft-server-list.com/server/509033/vote/",
-            logo: "https://cdn.openart.ai/published/YjlXgyEHpK0YyRlAgKMo/FWY51iKk_Awlf_512.webp",
-            prize: "Vote Crate Key",
-            background: "https://cdn.openart.ai/published/YjlXgyEHpK0YyRlAgKMo/FWY51iKk_Awlf_512.webp"
-        },
-        {
-            name: "Top MC Servers",
-            link: "https://top-mc-servers.net/server/362",
-            logo: "https://top-mc-servers.net/assets/img/favicon.png",
-            prize: "Vote Crate Key",
-            background: "https://top-mc-servers.net/assets/img/favicon.png"
-        },
-        {
-            name: "Top Minecraft Servers",
-            link: "https://topminecraftservers.org/vote/39577",
-            logo: "https://topminecraftservers.org/includes/img/favicon/favicon-96x96.png",
-            prize: "Vote Crate Key",
-            background: "https://topminecraftservers.org/includes/img/favicon/favicon-96x96.png"
-        }
-    ];
-
-    // Load vote sites
-    const voteSitesGrid = document.getElementById('voteSitesGrid');
-    voteSites.forEach(site => {
-        const card = document.createElement('div');
-        card.className = 'vote-card';
-        card.style.backgroundImage = `url(${site.background || site.logo})`;
-        
-        card.innerHTML = `
-            <div class="vote-card-content">
-                <img src="${site.logo}" alt="${site.name}" class="site-logo">
-                <h3 class="site-name">${site.name}</h3>
-                <a href="${site.link}" class="vote-link">
-                    Open <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-                <p class="vote-prize">
-                    ${site.prize} <i class="fa-solid fa-gift"></i>
-                </p>
-            </div>
-        `;
-        
-        voteSitesGrid.appendChild(card);
-    });
-</script>
     <script src="script.js"></script>
+    <script src="votesites.js"></script>
 </body>
 </html>
