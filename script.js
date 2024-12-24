@@ -9,111 +9,135 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch(`https://api.mcsrvstat.us/2/${serverIP}`);
             const data = await response.json();
-
-            if (data.online) {
-                playerCountEl.textContent = `${data.players.online}/${data.players.max} Online`;
-            } else {
-                playerCountEl.textContent = '0/0 Online';
-            }
+            playerCountEl.textContent = data.online ? `${data.players.online}/${data.players.max} Online` : '0/0 Online';
         } catch (error) {
-            playerCountEl.textContent = '0/0 Online';
             console.error('Failed to fetch player count:', error);
+            playerCountEl.textContent = '0/0 Online';
         }
     }
 
     // IP Copy Functionality
     function copyServerIP() {
-        navigator.clipboard.writeText(serverIP).then(() => {
-            console.log(`Copied server IP: ${serverIP}`);
-        }).catch(err => {
-            console.error('Failed to copy IP:', err);
-        });
+        navigator.clipboard.writeText(serverIP)
+            .then(() => console.log(`Copied server IP: ${serverIP}`))
+            .catch(err => console.error('Failed to copy IP:', err));
     }
 
-    // Handle all internal navigation links
-    function handleInternalLinks() {
-        const internalLinks = document.querySelectorAll('.nav-links a, .footer-links a');
-        internalLinks.forEach(link => {
+    // Handle all navigation links
+    function handleNavigationLinks() {
+        const allLinks = document.querySelectorAll('a');
+        
+        allLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                // Only prevent default if it's an anchor link
-                if (link.getAttribute('href').startsWith('#')) {
+                const href = link.getAttribute('href');
+                
+                // Skip if href is not present
+                if (!href) return;
+
+                // Handle anchor links (internal page navigation)
+                if (href.startsWith('#')) {
                     e.preventDefault();
-                    const targetId = link.getAttribute('href').slice(1);
+                    const targetId = href.slice(1);
                     const targetElement = document.getElementById(targetId);
+                    
                     if (targetElement) {
                         targetElement.scrollIntoView({ behavior: 'smooth' });
-                        
-                        // Close mobile menu if it's open
-                        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-                        const navLinks = document.querySelector('.nav-links');
-                        if (mobileMenuToggle && navLinks) {
-                            mobileMenuToggle.classList.remove('active');
-                            navLinks.classList.remove('mobile-active');
-                        }
+                        closeMobileMenu();
                     }
+                    return;
+                }
+
+                // Handle Discord links
+                if (href.includes('discord')) {
+                    e.preventDefault();
+                    window.location.href = discordLink;
+                    return;
+                }
+
+                // Handle vote sites and status links
+                if (href === 'votesites' || href.includes('status.mnsnetwork.xyz')) {
+                    e.preventDefault();
+                    window.location.href = href;
+                    return;
+                }
+
+                // Handle IP copy links
+                if (href === '') {
+                    e.preventDefault();
+                    copyServerIP();
+                    return;
                 }
             });
         });
     }
 
-    // Event Listeners for Copy IP Buttons
-    const copyIPButtons = document.querySelectorAll('#copy-ip, #server-ip, #footer-copy-ip');
-    copyIPButtons.forEach(button => {
-        button.addEventListener('click', copyServerIP);
-    });
+    // Mobile menu functionality
+    function setupMobileMenu() {
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.querySelector('.nav-links');
 
-    // Handle Discord links to open in same tab
-    const discordButtons = document.querySelectorAll('#discord-link, #discord-join, #main-discord-join, #footer-discord');
-    discordButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.location.href = discordLink;
-        });
-    });
+        if (!mobileMenuToggle || !navLinks) return;
 
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const navLinks = document.querySelector('.nav-links');
-    const playerCount = document.querySelector('.player-count');
-
-    // Toggle menu and animation
-    mobileMenuToggle?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        mobileMenuToggle.classList.toggle('active');
-        navLinks.classList.toggle('mobile-active');
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (mobileMenuToggle && navLinks && !mobileMenuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        function closeMobileMenu() {
             mobileMenuToggle.classList.remove('active');
             navLinks.classList.remove('mobile-active');
         }
-    });
 
-    // Handle window resize
-    let timeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            if (window.innerWidth > 768) {
-                mobileMenuToggle?.classList.remove('active');
-                navLinks?.classList.remove('mobile-active');
+        // Toggle menu
+        mobileMenuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenuToggle.classList.toggle('active');
+            navLinks.classList.toggle('mobile-active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                closeMobileMenu();
             }
-        }, 250);
-    });
+        });
 
-    // Remove the touchmove prevention
-    // Only prevent touch events within the mobile menu when it's active
-    document.body.addEventListener('touchmove', (e) => {
-        if (navLinks?.classList.contains('mobile-active') && e.target.closest('.nav-links')) {
-            e.preventDefault();
-        }
-    }, { passive: false });
+        // Handle window resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (window.innerWidth > 768) {
+                    closeMobileMenu();
+                }
+            }, 250);
+        });
 
-    // Initialize link handlers
-    handleInternalLinks();
+        // Prevent touch events within mobile menu when active
+        document.body.addEventListener('touchmove', (e) => {
+            if (navLinks.classList.contains('mobile-active') && e.target.closest('.nav-links')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
 
-    // Fetch player count initially and set an interval to update
-    fetchPlayerCount();
-    setInterval(fetchPlayerCount, 60000);
+        return { closeMobileMenu };
+    }
+
+    // Initialize all functionality
+    function init() {
+        // Setup mobile menu and get closeMobileMenu function
+        const { closeMobileMenu } = setupMobileMenu() || {};
+
+        // Handle navigation links
+        handleNavigationLinks();
+
+        // Setup IP copy buttons
+        const copyIPButtons = document.querySelectorAll('#copy-ip, #server-ip, #footer-copy-ip');
+        copyIPButtons.forEach(button => button.addEventListener('click', copyServerIP));
+
+        // Initial player count fetch and interval setup
+        fetchPlayerCount();
+        setInterval(fetchPlayerCount, 60000);
+
+        // Make closeMobileMenu available globally if needed
+        window.closeMobileMenu = closeMobileMenu;
+    }
+
+    // Start the application
+    init();
 });
