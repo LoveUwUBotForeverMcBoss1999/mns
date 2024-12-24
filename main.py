@@ -2,19 +2,15 @@ from flask import Flask, send_from_directory, abort
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    try:
-        return send_from_directory('.', 'index.html')
-    except Exception as e:
-        return f"Error loading index.html: {str(e)}", 500
-
+@app.route('/', defaults={'filename': 'index.html'})
 @app.route('/<path:filename>')
-def static_files(filename):
+def serve_files(filename):
     try:
+        # Serve the requested file from the root directory
         return send_from_directory('.', filename)
-    except Exception as e:
-        return f"Error loading {filename}: {str(e)}", 404
+    except:
+        # If the file is not found, return a 404 error
+        abort(404)
 
 if __name__ == '__main__':
     app.run(debug=True)
