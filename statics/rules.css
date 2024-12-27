@@ -1,0 +1,66 @@
+/* Rules Section */
+.rules {
+    background: var(--darker-bg);
+    padding: 4rem 2rem;
+    color: var(--text-light);
+}
+
+.rules-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.rules h2.section-title {
+    color: var(--primary);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.rule-category {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.rule-category h3 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.5rem;
+}
+
+.rule-category ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.rule-category ul li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+    color: var(--text-gray);
+}
+
+.rule-category ul li::before {
+    content: '\2022';
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.2rem;
+    position: absolute;
+    left: 0;
+    top: 0.2rem;
+}
+
+.rule-category ul li:hover {
+    color: var(--primary);
+}

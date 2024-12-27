@@ -1,0 +1,101 @@
+/* Game Modes Section */
+.game-modes {
+    padding: 6rem 2rem;
+    position: relative;
+    z-index: 2;
+    background: var(--darker-bg);
+}
+
+.modes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mode-card {
+    position: relative;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.mode-card:hover {
+    transform: translateY(-10px);
+}
+
+.mode-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+.mode-card:hover .mode-background {
+    transform: scale(1.1);
+}
+
+.mode-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.7)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mode-title {
+    color: var(--text-light);
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Background images for each mode */
+.survival-bg {
+    background-image: url('img/survival.png');
+}
+
+.skywars-bg {
+    background-image: url('img/skywars.png');
+}
+
+.lifesteal-bg {
+    background-image: url('img/lifesteal.png');
+}
+
+.skyblock-bg {
+    background-image: url('img/skyblock.png');
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .modes-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .mode-card {
+        height: 250px;
+    }
+
+    .mode-title {
+        font-size: 1.75rem;
+    }
+}

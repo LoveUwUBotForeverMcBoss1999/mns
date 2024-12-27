@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote &#8226; MNS Minecraft Network</title>
+    
+    <!-- Meta Preview for Open Graph -->
+    <meta property="og:title" content="Vote • MNS Minecraft Network">
+    <meta property="og:description" content="Vote for MNS Minecraft Network and earn rewards like Vote Crate Keys! Join the adventure today.">
+    <meta property="og:image" content="https://mnsnetwork.xyz/logo.png">
+    <meta property="og:url" content="https://mnsnetwork.xyz/vote">
+    <meta property="og:type" content="website">
+    
+    <!-- Meta Preview for Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vote • MNS Minecraft Network">
+    <meta name="twitter:description" content="Vote for MNS Minecraft Network and earn rewards like Vote Crate Keys! Join the adventure today.">
+    <meta name="twitter:image" content="https://mnsnetwork.xyz/logo.png">
+    <meta name="twitter:site" content="@Miyuru99"> <!-- Replace with your Twitter handle -->
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://mnsnetwork.xyz/logo.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="statics/styles.css">
+    <link rel="stylesheet" href="statics/vote.css">
+</head>    
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <img src="https://mnsnetwork.xyz/logo.png" alt="Server Logo">
+                <span class="logo-text">MNS Minecraft</span>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="nav-links">
+                <a href="/"><i class="fas fa-home"></i> Home</a>
+                <a href="store"><i class="fas fa-shopping-cart"></i> Store</a>
+                <a href="vote"><i class="fas fa-star"></i> Vote</a>
+                <a href="https://discord.mnsnetwork.xyz/"><i class="fab fa-discord"></i> Discord</a>
+                <div class="server-ip">
+                    <i class="fas fa-server"></i>
+                    mc.mnsnetwork.xyz
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <img src="https://mnsnetwork.xyz/logo.png" alt="Server Logo" class="hero-logo">
+            <h1>Welcome to MNS Network</h1>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">
+                    <i class="fab fa-discord"></i> <a href="https://discord.mnsnetwork.xyz/" style="text-decoration: none;" >Join Discord</a>
+                </button>
+                <button class="btn btn-primary" onclick="copyServerIP()">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+            </div>
+            <div id="playerCount" class="player-count">
+                <i class="fas fa-users"></i> Loading...
+            </div>
+        </div>
+    </section>
+
+    <!-- Vote Section -->
+    <section id="vote" class="vote">
+        <div class="vote-content">
+            <h2 class="section-title">Vote for Us</h2>
+            <div class="vote-grid">
+                <div class="vote-card" style="background-image: url('https://minecraft.buzz/template/images/logo.png?v=6');">
+                    <img src="https://minecraft.buzz/template/images/logo.png?v=6" alt="Minecraft Buzz">
+                    <h3>Minecraft Buzz</h3>
+                    <p>Reward: Vote Crate Key</p>
+                    <a href="https://minecraft.buzz/vote/12835" class="btn btn-primary" target="_blank">Vote Now</a>
+                </div>
+                <div class="vote-card" style="background-image: url('https://mnsnetwork.xyz/minecraftservers.org.jpg');">
+                    <img src="https://mnsnetwork.xyz/minecraftservers.org.jpg" alt="MinecraftServers.ORG">
+                    <h3>MinecraftServers.ORG</h3>
+                    <p>Reward: Vote Crate Keys</p>
+                    <a href="https://minecraftservers.org/vote/669390" class="btn btn-primary" target="_blank">Vote Now</a>
+                </div>
+                <div class="vote-card" style="background-image: url('https://preview.redd.it/variations-to-the-minecraft-logo-v0-0dzqovtefeqd1.png?width=1080&crop=smart&auto=webp&s=e5fe1b8b9ab1a689dd6059f087caca969401592f');">
+                    <img src="https://preview.redd.it/variations-to-the-minecraft-logo-v0-0dzqovtefeqd1.png?width=1080&crop=smart&auto=webp&s=e5fe1b8b9ab1a689dd6059f087caca969401592f" alt="ServersPact">
+                    <h3>ServersPact</h3>
+                    <p>Reward: Vote Crate Key</p>
+                    <a href="https://www.serverpact.com/vote-47777" class="btn btn-primary" target="_blank">Vote Now</a>
+                </div>
+                <div class="vote-card" style="background-image: url('https://cdn.openart.ai/published/YjlXgyEHpK0YyRlAgKMo/FWY51iKk_Awlf_512.webp');">
+                    <img src="https://cdn.openart.ai/published/YjlXgyEHpK0YyRlAgKMo/FWY51iKk_Awlf_512.webp" alt="Minecraft Server List">
+                    <h3>Minecraft Server List</h3>
+                    <p>Reward: Vote Crate Key</p>
+                    <a href="https://minecraft-server-list.com/server/509033/vote/" class="btn btn-primary" target="_blank">Vote Now</a>
+                </div>
+                <div class="vote-card" style="background-image: url('https://top-mc-servers.net/assets/img/favicon.png');">
+                    <img src="https://top-mc-servers.net/assets/img/favicon.png" alt="Top MC Servers">
+                    <h3>Top MC Servers</h3>
+                    <p>Reward: Vote Crate Key</p>
+                    <a href="https://top-mc-servers.net/server/362" class="btn btn-primary" target="_blank">Vote Now</a>
+                </div>
+                <div class="vote-card" style="background-image: url('https://topminecraftservers.org/includes/img/favicon/favicon-96x96.png');">
+                    <img src="https://topminecraftservers.org/includes/img/favicon/favicon-96x96.png" alt="Top Minecraft Servers">
+                    <h3>Top Minecraft Servers</h3>
+                    <p>Reward: Vote Crate Key</p>
+                    <a href="https://topminecraftservers.org/vote/39577" class="btn btn-primary" target="_blank">Vote Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#store"><i class="fas fa-shopping-cart"></i> Store</a></li>
+                    <li><a href="#vote"><i class="fas fa-star"></i> Vote</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="https://discord.mnsnetwork.xyz/"><i class="fab fa-discord"></i> Discord</a></li>
+                    <li><a href="#forums"><i class="fas fa-comments"></i> Forums</a></li>
+                    <li><a href="rules.html"><i class="fas fa-gavel"></i> Rules</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="contact-us"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    <li><a href="#terms"><i class="fas fa-file-alt"></i> Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 MNS Minecraft Network. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="statics/script.js"></script>
+</body>
+</html>

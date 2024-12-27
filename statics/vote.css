@@ -1,0 +1,138 @@
+/* Vote Section */
+.vote {
+    background: var(--darker-bg);
+    padding: 6rem 2rem;
+    color: var(--text-light);
+    text-align: center;
+    position: relative;
+}
+
+.vote-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.vote .section-title {
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.vote-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.vote-card {
+    position: relative;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Background image with blur */
+.vote-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    z-index: 1;
+}
+
+/* Dark overlay */
+.vote-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.85);
+    z-index: 2;
+}
+
+/* Card content */
+.vote-card > * {
+    position: relative;
+    z-index: 3;
+}
+
+.vote-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.vote-card:hover img {
+    transform: scale(1.1);
+}
+
+.vote-card h3 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.vote-card p {
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.vote-card .btn {
+    background: var(--primary);
+    color: var(--text-light);
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.vote-card .btn:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+}
+
+/* Hover effects */
+.vote-card {
+    transition: transform 0.3s ease;
+}
+
+.vote-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .vote-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .vote-card {
+        height: 280px;
+    }
+}
