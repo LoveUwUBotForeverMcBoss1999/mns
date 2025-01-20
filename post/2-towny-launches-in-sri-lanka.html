@@ -28,6 +28,49 @@
     <link rel="stylesheet" href="statics/post.css">
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <img src="https://mnsnetwork.xyz/logo.png" alt="Server Logo">
+                <span class="logo-text">MNS Network</span>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="nav-links">
+                <a href="/"><i class="fas fa-home"></i> Home</a>
+                <a href="store"><i class="fas fa-shopping-cart"></i> Store</a>
+                <a href="vote"><i class="fas fa-star"></i> Vote</a>
+                <a target="_blank" href="https://discord.mnsnetwork.xyz/"><i class="fab fa-discord"></i> Discord</a>
+                <div class="server-ip">
+                    <i class="fas fa-server"></i>
+                    mc.mnsnetwork.xyz
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <img src="https://mnsnetwork.xyz/logo.png" alt="Server Logo" class="hero-logo">
+            <h1>Welcome to MNS Network</h1>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">
+                    <a target="_blank" href="https://discord.mnsnetwork.xyz/" style="text-decoration: none; color: #ffffff;"><i class="fab fa-discord"></i> Join Discord</a>
+                </button>
+                <button class="btn btn-primary" onclick="copyServerIP()">
+                    <i class="fas fa-play"></i> Play Now
+                </button>
+            </div>
+            <div id="playerCount" class="player-count">
+                <i class="fas fa-users"></i> Loading...
+            </div>
+        </div>
+    </section>
     <!-- Post Section -->
     <section class="post-section">
         <div class="post-container">
